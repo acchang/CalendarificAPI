@@ -9,14 +9,12 @@ function getFetch(){
     if (noSpacesYear.length > 1) {
       year = noSpacesYear.join('%20')}
     else year = noSpacesYear
-    console.log(year)
 
   let Topic
   let noSpacesTopic = initialTopic.split(" ")
     if (noSpacesTopic.length > 1) {
       Topic = noSpacesTopic.join('%20')}
     else Topic = noSpacesTopic
-    console.log(Topic)
 
     let api_link
 
@@ -34,8 +32,6 @@ fetch(`https://api.artic.edu/api/v1/artworks/search?q=${Topic}&query[term][date_
       let number = Math.floor(Math.random() * data.data.length)
       api_link = data.data[number].api_link
       console.log("api:" + data.data[0].api_link)
-
-// 1980, woman gets Cindy Sherman
 
       fetch(`${api_link}`)
         .then(res => res.json()) 
