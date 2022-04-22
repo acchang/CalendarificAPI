@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="description" content="See what complaints were filed at your nearest intersection">
+    	<meta name="keywords" content="one, two, three">
+
+		<title>NYC 311 Complaint API</title>
+
+
+		<!-- external CSS link -->
+		<link rel="stylesheet" href="normalize.css">
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+
+		<h1>NYC 311 Complaint API</h1>
+
+		<h3>See what complaints were filed at your nearest intersection</h3>
+
+		<h4>From <a href="https://data.cityofnewyork.us/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9">
+		"311 Service Requests from 2010 to Present"</a></h4>
+		</h4>
+
+
+		<H3>Cross Street 1 <input type="text" name="" value=""></H3>
+		<h4>Try "EAST"/"WEST" and no ordinals ie "EAST 23 STREET"</h4>
+		<H3>Cross Street 2 <input type="text" id="street2" name="" value=""></H3>
+		<H4>Avenues may only need name, ie "BROADWAY". Try reversing the streets too.</H4>
+		<h3>Borough <input type="text" id="borough" name="" value=""></h3>
+		<h4>ie BRONX, BROOKLYN, MANHATTAN, STATEN ISLAND OR QUEENS</h4>
+		<button type="button" name="button">Get Incidents</button>
+		
+
+		<h2>Incidents</h2>
+		<h3 id="incidentlist"></h3>
+
+		<script type="text/javascript" src="script1.js"></script>
+	</body>
+</html>
+
