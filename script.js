@@ -1,8 +1,13 @@
 document.querySelector('button').addEventListener('click', getFetch)
 
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+  }
+}
+
 function getFetch(){
     let country = "US"
-    // maybe change country later
     let month
     let day
 
@@ -21,34 +26,38 @@ fetch(`https://calendarific.com/api/v2/holidays?api_key=b75fdd08b1fa9eb16e482105
   .then(data => {
     console.log(data)
 
+    let responseHeader = document.querySelector('#responseHeader');
+
     if (data.response.holidays.length < 1){
-      document.getElementById('name').innerText = "No holidays today. Celebrate yourself!"
-      document.getElementById('description').innerText = ""}
+      removeAllChildNodes(responseHeader)
+
+      let noneFound = document.createElement('h4')
+      noneFound.id = noneFound
+      responseHeader.appendChild(noneFound)
+      noneFound.innerHTML = "No holidays today. Celebrate yourself!"}
 
     else {
+
+      removeAllChildNodes(responseHeader)
+
       for (i = 0; i < data.response.holidays.length; i++ ) {
 
-        // console.log(data.response.holidays[i].name)
-        // document.getElementById('name').innerText = ""
-        document.getElementById('name').innerHTML += (data.response.holidays[i].name + data.response.holidays[i].description)
+        let nameDisplay = document.createElement('h4')
+        nameDisplay.id = data.response.holidays[i]
+        nameDisplay.innerHTML = data.response.holidays[i].name
+        responseHeader.appendChild(nameDisplay)
 
+        let descriptionDisplay = document.createElement('h5')
+        descriptionDisplay.id = data.response.holidays[i]
+        descriptionDisplay.innerHTML = data.response.holidays[i].description
+        nameDisplay.appendChild(descriptionDisplay)
 
-        // document.getElementById('name').innerText = ""
-        // const response = document.getElementById('response')
-        // // response.innertext = ""
-
-        // let nameDisplay = document.createElement("h3") 
-        // nameDisplay.setAttribute('id', 'nameDisplay')
-        // document.getElementById('nameDisplay').innerText = data.response.holidays[i].name
-        // name.append(nameDisplay)
-
+        let locationDisplay = document.createElement('h6')
+        locationDisplay.id = data.response.holidays[i]
+        locationDisplay.innerHTML = "locations: " + data.response.holidays[i].locations
+        descriptionDisplay.appendChild(locationDisplay)
 
       }
-    // document.getElementById('name').innerText = ""
-    // document.getElementById('name').innerText = data.response.holidays[0].name
-
-    // document.getElementById('description').innerText = ""
-    // document.getElementById('description').innerText = data.response.holidays[0].description
     }
 
       })
