@@ -2,6 +2,7 @@ document.querySelector('button').addEventListener('click', getFetch)
 
 function getFetch(){
     let country = "US"
+    // maybe change country later
     let month
     let day
 
@@ -21,13 +22,12 @@ fetch(`https://calendarific.com/api/v2/holidays?api_key=b75fdd08b1fa9eb16e482105
     console.log(data)
 
     if (data.response.holidays.length < 1){
-      document.getElementById('name').innerText = "Nothing! These days are rarer than you might think."
+      document.getElementById('name').innerText = "No holidays today. Celebrate yourself!"
       document.getElementById('description').innerText = ""}
 
     else {
-      // use a for loop to display all, need to create html elements.
       for (i = 0; i < data.response.holidays.length; i++ ) {
-        
+
         // console.log(data.response.holidays[i].name)
         // document.getElementById('name').innerText = ""
         document.getElementById('name').innerHTML += (data.response.holidays[i].name + data.response.holidays[i].description)
