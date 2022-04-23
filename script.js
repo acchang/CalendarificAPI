@@ -5,49 +5,50 @@ function getFetch(){
     let month
     let day
 
-    const pickerDate = document.getElementById('date').value
-    const splitDate = pickerDate.split('-');
-
+    let pickerDate = document.getElementById('date').value
+    let splitDate = pickerDate.split('-');
     let year = splitDate[0]
-    console.log(year)
 
     if (splitDate[1].charAt(0) === "0"){month = splitDate[1].charAt(1)}
       else month = splitDate[1]
-    console.log(month)
   
     if (splitDate[2].charAt(0) === "0"){day = splitDate[2].charAt(1)}
     else day = splitDate[2]
-    console.log(day)
 
 fetch(`https://calendarific.com/api/v2/holidays?api_key=b75fdd08b1fa9eb16e4821057eef4c83ca861f77&country=${country}&year=${year}&month=${month}&day=${day}`)
-// https://calendarific.com/api/v2/holidays?api_key=b75fdd08b1fa9eb16e4821057eef4c83ca861f77&country=US&year=2019&month=1&day=23
   .then(res => res.json()) 
   .then(data => {
+    console.log(data)
 
-    if (data.data.length < 1){
-      document.getElementById('name').innerText = "No Results"
+    if (data.response.holidays.length < 1){
+      document.getElementById('name').innerText = "Nothing! These days are rarer than you might think."
       document.getElementById('description').innerText = ""}
 
     else {
-      console.log(data)
-      let number = Math.floor(Math.random() * data.data.length)
-      api_link = data.data[number].api_link
-      console.log("api:" + data.data[0].api_link)
+      // use a for loop to display all, need to create html elements.
+      for (i = 0; i < data.response.holidays.length; i++ ) {
+        
+        // console.log(data.response.holidays[i].name)
+        // document.getElementById('name').innerText = ""
+        document.getElementById('name').innerHTML += (data.response.holidays[i].name + data.response.holidays[i].description)
 
-      fetch(`${api_link}`)
-        .then(res => res.json()) 
-        .then(data => {          
-          document.getElementById('title').innerText = ""
-          document.getElementById('title').innerText = data.data.title
-          document.getElementById('artist').innerText = ""
-          document.getElementById('artist').innerText = data.data.artist_display
-          document.querySelector('img').src =
-          `https://www.artic.edu/iiif/2/${data.data.image_id}/full/843,/0/default.jpg`
 
-        })
-        .catch(err => {
-            console.log(`error ${err}`)
-        })
+        // document.getElementById('name').innerText = ""
+        // const response = document.getElementById('response')
+        // // response.innertext = ""
+
+        // let nameDisplay = document.createElement("h3") 
+        // nameDisplay.setAttribute('id', 'nameDisplay')
+        // document.getElementById('nameDisplay').innerText = data.response.holidays[i].name
+        // name.append(nameDisplay)
+
+
+      }
+    // document.getElementById('name').innerText = ""
+    // document.getElementById('name').innerText = data.response.holidays[0].name
+
+    // document.getElementById('description').innerText = ""
+    // document.getElementById('description').innerText = data.response.holidays[0].description
     }
 
       })
