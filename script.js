@@ -2,20 +2,20 @@ document.querySelector('button').addEventListener('click', getFetch)
 
 function getFetch(){
     let country = "US"
-    const month
-    const day
+    let month
+    let day
 
     const pickerDate = document.getElementById('date').value
     const splitDate = pickerDate.split('-');
 
-    const year = splitDate[0]
+    let year = splitDate[0]
     console.log(year)
 
-    if (splitDate[1].charAt(0) = "0"){month = splitDate[1].charAt(1)}
+    if (splitDate[1].charAt(0) === "0"){month = splitDate[1].charAt(1)}
       else month = splitDate[1]
     console.log(month)
   
-    if (splitDate[2].charAt(0) = "0"){month = splitDate[2].charAt(1)}
+    if (splitDate[2].charAt(0) === "0"){day = splitDate[2].charAt(1)}
     else day = splitDate[2]
     console.log(day)
 
@@ -26,7 +26,7 @@ fetch(`https://calendarific.com/api/v2/holidays?api_key=b75fdd08b1fa9eb16e482105
 
     if (data.data.length < 1){
       document.getElementById('name').innerText = "No Results"
-      document.getElementById('description').innerText = ""
+      document.getElementById('description').innerText = ""}
 
     else {
       console.log(data)
@@ -49,7 +49,7 @@ fetch(`https://calendarific.com/api/v2/holidays?api_key=b75fdd08b1fa9eb16e482105
             console.log(`error ${err}`)
         })
     }
-    
+
       })
       .catch(err => {
           console.log(`error ${err}`)
