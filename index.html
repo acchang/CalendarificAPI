@@ -2,10 +2,10 @@
 <html lang="en">
 	<head>
     	<meta charset="utf-8">
-    	<meta name="description" content="Pick a year, pick a keyword, get an image">
+    	<meta name="description" content="Every day is a special day">
     	<meta name="keywords" content="one, two, three">
 
-		<title>Art Institute of Chicago Art Picker</title>
+		<title>What holiday is today?</title>
 
 		<!-- external CSS link -->
 		<link rel="stylesheet" href="normalize.css">
@@ -15,23 +15,28 @@
 
 		<h1>Holidays of the day</h1>
 
-		<h3>Pick a year, pick a keyword, get an image</h3>
+		<h3>Find out what's being celebrated in the US and elsewhere</h3>
 
-		<h4>From <a href="http://api.artic.edu/docs/">
-			Art Institute of Chicago API
-		</a></h4>
-		</h4>
+		<h4>Data from <a href="https://calendarific.com">Calendarific API</a></h4>
 
-		<h3>Year&nbsp;<input type="text" id="year" name="" value=""></h3>
-		<h4>When the work was started</h4>
-		<h3>Keyword &nbsp;<input type="text" id="Topic" name="" value=""></h3>
-		<h4>How about your favorite color, ie "blue" or topic, ie "cats"</h4>
-		<button type="button" name="button">Get My Piece!</button>
+		<!-- parameter will be date picker by US and by one other random country?
+		use ISO3166; cannot pull all and a random one of them bc 1000 requests per month
+		give US code as default but ask to enter ISO3166 
+	
+		return name and description -->
+
+		<h3>Date&nbsp;<input type="date" id="date" name="date">
 		
-		<h2>Your Artwork</h2>
-		<h3 id="title"></h3>
-		<h3 id="artist"></h3>
-		<img src="" alt="">
+		<!-- The default is US, but are you visiting another country?
+					<h3>Keyword &nbsp;<input type="text" id="Topic" name="" value=""></h3>
+		<h4>How about your favorite color, ie "blue" or topic, ie "cats"</h4>
+		-->
+
+		<button type="button" name="button">Today Is ... </button>
+		
+		<h2>What's happening on this date:</h2>
+		<h3 id="name"></h3>
+		<h4 id="description"></h4>
 
 		<script type="text/javascript" src="script.js"></script>
 	</body>
