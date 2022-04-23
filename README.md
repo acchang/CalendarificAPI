@@ -23,5 +23,6 @@ And I think the way things are set up with "country" as a required parameter, I 
 I've worked enough on this and am stopping now but I thought of other improvements I could make.
 
 I could allow the user to pick by country. It would be relatively easy, a matter of switching the inputs, but creating a dropdown to correspond with `iso-3166 format` could be tiresome.
+(EDIT: I did this, was easy.)
 
-Also, defaulting to today and using `new Date()` seemed like an effort.
+Also, defaulting to today and using `new Date()`.

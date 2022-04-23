@@ -7,7 +7,7 @@ function removeAllChildNodes(parent) {
 }
 
 function getFetch(){
-    let country = "US"
+    let country = document.getElementById('country').value
     let month
     let day
 
